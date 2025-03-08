@@ -18,9 +18,18 @@ def get_sum():
             {
                 "sum": 3
             }
-    """  
+    """ 
+    a = request.args.get('a')
+    b = request.args.get('b')
 
-    return 
+    if a and b:
+        sum = int(a) + int(b)
+        response = {
+            "sum": sum
+        }
+        return response
+    else:
+        return "Please provide two numbers in query string"
     
 
 if __name__ == "__main__":

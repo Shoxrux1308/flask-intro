@@ -24,8 +24,19 @@ def to_usd():
                 "convertedCurrency": "USD"
             }
     """
-
-    return 
+    num = request.args.get('amount')
+    if num is None:
+        return "Please provide an amount"
+    else:
+        num = float(num)
+        converted = num / usd
+        return {
+            "amount": num,
+            "currency": "UZS",
+            "converted": converted,
+            "convertedCurrency": "USD"
+        }
+    
 @app.route('/api/to-uzs', methods=['GET'])
 def to_uzs():
     """
@@ -42,10 +53,21 @@ def to_uzs():
             {
                 "amount": 1000,
                 "currency": "USD",
-                "converted": 1138070,
+                "converted": 12300,
                 "convertedCurrency": "UZS"
             }
     """
-    return 
+    num = request.args.get('amount')
+    if num is None:
+        return "Please provide an amount"
+    else:
+        num = float(num)
+        converted = num * usd
+        return {
+            "amount": num,
+            "currency": "USD",
+            "converted": converted,
+            "convertedCurrency": "UZS"
+        }
 if __name__ == '__main__':
     app.run(debug = True)    
